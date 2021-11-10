@@ -1,12 +1,16 @@
 package br.com.zup.GerenciadorDeContas.componentes;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 @Component
 public class Conversor {
 
-    public ModelMapper modelMapper (){
+    @Bean
+    public ModelMapper modelMapper(){
         return new ModelMapper();
     }
+
+
 }
