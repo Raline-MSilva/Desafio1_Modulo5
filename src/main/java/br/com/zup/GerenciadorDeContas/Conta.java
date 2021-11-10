@@ -4,6 +4,8 @@ import br.com.zup.GerenciadorDeContas.enums.Status;
 import br.com.zup.GerenciadorDeContas.enums.Tipo;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,11 +19,13 @@ public class Conta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Enumerated(EnumType.STRING)
     private Tipo tipo;
     private String nome;
     private double valor;
     private LocalDate dataDevencimento;
     private LocalDateTime dataDePagamento;
+    @Enumerated(EnumType.STRING)
     private Status status;
 
     public Conta() {
