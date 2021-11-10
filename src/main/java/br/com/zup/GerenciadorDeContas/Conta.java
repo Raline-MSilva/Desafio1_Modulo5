@@ -1,5 +1,6 @@
 package br.com.zup.GerenciadorDeContas;
 
+import br.com.zup.GerenciadorDeContas.enums.Status;
 import br.com.zup.GerenciadorDeContas.enums.Tipo;
 
 import javax.persistence.Entity;
@@ -21,9 +22,9 @@ public class Conta {
     private double valor;
     private LocalDate dataDevencimento;
     private LocalDateTime dataDePagamento;
+    private Status status;
 
     public Conta() {
-
     }
 
     public int getId() {
@@ -72,5 +73,13 @@ public class Conta {
 
     public void setDataDePagamento(LocalDateTime dataDePagamento) {
         this.dataDePagamento = dataDePagamento;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }
