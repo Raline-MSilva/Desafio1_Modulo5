@@ -6,7 +6,7 @@ import br.com.zup.GerenciadorDeContas.enums.Tipo;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class ContaDTO {
+public class ContaSaidaDTO {
     private int id;
     private Tipo tipo;
     private String nome;
@@ -15,7 +15,7 @@ public class ContaDTO {
     private LocalDateTime dataDePagamento;
     private Status status;
 
-    public ContaDTO() {
+    public ContaSaidaDTO() {
     }
 
     public int getId() {
