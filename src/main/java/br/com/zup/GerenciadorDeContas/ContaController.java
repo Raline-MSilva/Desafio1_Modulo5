@@ -5,7 +5,7 @@ import br.com.zup.GerenciadorDeContas.dtos.ContaEntradaDTO;
 import br.com.zup.GerenciadorDeContas.dtos.ContaSaidaDTO;
 import br.com.zup.GerenciadorDeContas.dtos.ResumoContaDTO;
 import br.com.zup.GerenciadorDeContas.enums.Status;
-import br.com.zup.GerenciadorDeContas.excecoes.TipoEnumInvalido;
+import br.com.zup.GerenciadorDeContas.excecoes.TipoEnumInvalidoException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -51,6 +51,6 @@ public class ContaController {
         if (statusDTO.getStatus() == Status.PAGO) {
             return modelMapper.map(contaService.atualizarStatusDoPagamento(id), ContaSaidaDTO.class);
         }
-        throw new TipoEnumInvalido("Status inválido");
+        throw new TipoEnumInvalidoException("Status inválido");
     }
 }
