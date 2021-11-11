@@ -1,7 +1,7 @@
 package br.com.zup.GerenciadorDeContas;
 
 import br.com.zup.GerenciadorDeContas.enums.Status;
-import br.com.zup.GerenciadorDeContas.excecoes.ContaNaoExiste;
+import br.com.zup.GerenciadorDeContas.excecoes.IdNaoExiste;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,10 +34,10 @@ public class ContaService {
 
     public Conta buscarId (int id){
         Optional<Conta> conta = contaRepository.findById(id);
-        if (conta.isPresent()){
+        if (conta.isEmpty()){
             return conta.get();
         }
-        throw new ContaNaoExiste();
+        throw new IdNaoExiste("Id não encontrado");
     }
 
     public Conta atualizarStatusDoPagamento(int id){
