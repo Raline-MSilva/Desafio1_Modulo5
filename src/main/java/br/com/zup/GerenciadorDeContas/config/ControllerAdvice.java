@@ -24,6 +24,7 @@ public class ControllerAdvice {
         }
         return mensagemDeErros;
     }
+
     @ExceptionHandler(IdNaoExisteException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public MensagemDeErro tratarExcecaoDeIdNaoExisteException(IdNaoExisteException exception){
