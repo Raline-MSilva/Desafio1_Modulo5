@@ -35,9 +35,10 @@ public class ContaService {
     public Conta buscarId (int id){
         Optional<Conta> conta = contaRepository.findById(id);
         if (conta.isEmpty()){
-            return conta.get();
+            throw new IdNaoExiste("Id não encontrado");
         }
-        throw new IdNaoExiste("Id não encontrado");
+
+        return conta.get();
     }
 
     public Conta atualizarStatusDoPagamento(int id){
