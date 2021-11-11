@@ -3,6 +3,7 @@ package br.com.zup.GerenciadorDeContas.config;
 import br.com.zup.GerenciadorDeContas.excecoes.IdNaoExisteException;
 import br.com.zup.GerenciadorDeContas.excecoes.StatusInvalidoException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -37,4 +38,11 @@ public class ControllerAdvice {
     public MensagemDeErro tratarExcecaoTipoEnumInvalidoException(StatusInvalidoException exception){
         return new MensagemDeErro(exception.getMessage());
     }
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public MensagemDeErro tratarExcecaoEnumInvalidoException(HttpMessageNotReadableException exception){
+        return new MensagemDeErro(exception.getLocalizedMessage());
+    }
+
 }
