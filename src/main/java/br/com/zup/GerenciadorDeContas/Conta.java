@@ -3,6 +3,7 @@ package br.com.zup.GerenciadorDeContas;
 import br.com.zup.GerenciadorDeContas.enums.Status;
 import br.com.zup.GerenciadorDeContas.enums.Tipo;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -21,9 +22,12 @@ public class Conta {
     private int id;
     @Enumerated(EnumType.STRING)
     private Tipo tipo;
+    @Column(nullable = false)
     private String nome;
+    @Column(nullable = false)
     private double valor;
     private LocalDate dataDevencimento;
+    @Column(nullable = true)
     private LocalDateTime dataDePagamento;
     @Enumerated(EnumType.STRING)
     private Status status;
