@@ -39,4 +39,13 @@ public class ContaService {
         }
         throw new ContaNaoExiste();
     }
+
+    public Conta atualizarStatusDoPagamento(int id){
+        Conta conta = buscarId(id);
+        conta.setStatus(Status.PAGO);
+        conta.setDataDePagamento(LocalDateTime.now());
+        contaRepository.save(conta);
+
+        return conta;
+    }
 }
