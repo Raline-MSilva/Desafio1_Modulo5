@@ -1,5 +1,6 @@
 package br.com.zup.GerenciadorDeContas.config;
 
+import br.com.zup.GerenciadorDeContas.excecoes.IdNaoExisteException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -22,5 +23,10 @@ public class ControllerAdvice {
             mensagemDeErros.add(new MensagemDeErro(fieldError.getDefaultMessage()));
         }
         return mensagemDeErros;
+    }
+    @ExceptionHandler(IdNaoExisteException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public MensagemDeErro tratarExcecaoDeIdNaoExisteException(IdNaoExisteException exception){
+        return new MensagemDeErro(exception.getMessage());
     }
 }
