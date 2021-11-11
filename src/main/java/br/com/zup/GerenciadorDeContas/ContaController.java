@@ -54,4 +54,10 @@ public class ContaController {
         }
         throw new StatusInvalidoException("Status inválido");
     }
+
+    @GetMapping("/{id}")
+    public ContaSaidaDTO exibirContaEspecifico(@PathVariable int id){
+        Conta conta = contaService.buscarId(id);
+        return modelMapper.map(conta, ContaSaidaDTO.class);
+    }
 }
