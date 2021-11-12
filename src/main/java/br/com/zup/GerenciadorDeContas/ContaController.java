@@ -10,6 +10,7 @@ import br.com.zup.GerenciadorDeContas.excecoes.StatusInvalidoException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -63,5 +64,10 @@ public class ContaController {
     public ContaSaidaDTO exibirContaEspecifico(@PathVariable int id){
         Conta conta = contaService.buscarId(id);
         return modelMapper.map(conta, ContaSaidaDTO.class);
+    }
+
+    @DeleteMapping("{id}")
+    public void deletarConta (@PathVariable int id){
+        contaService.deletarConta(id);
     }
 }
