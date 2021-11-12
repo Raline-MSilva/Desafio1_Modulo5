@@ -1,6 +1,7 @@
 package br.com.zup.GerenciadorDeContas;
 
 import br.com.zup.GerenciadorDeContas.enums.Status;
+import br.com.zup.GerenciadorDeContas.enums.Tipo;
 import br.com.zup.GerenciadorDeContas.excecoes.IdNaoExisteException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,10 @@ public class ContaService {
         return contaRepository.save(conta);
     }
 
-    public List<Conta> listarContasCadastradas(){
+    public List<Conta> listarContasCadastradas(Status status){
+        if (status != null){
+            return contaRepository.findAllByStatus(status);
+        }
         List<Conta> contas = (List<Conta>)contaRepository.findAll();
         return contas;
     }
