@@ -28,9 +28,11 @@ public class ContaService {
         return contaRepository.save(conta);
     }
 
-    public List<Conta> listarContasCadastradas(Status status){
+    public List<Conta> listarContasCadastradas(Status status, Tipo tipo){
         if (status != null){
             return contaRepository.findAllByStatus(status);
+        } else if (tipo != null){
+            return contaRepository.findAllByTipo(tipo);
         }
         List<Conta> contas = (List<Conta>)contaRepository.findAll();
         return contas;
