@@ -9,5 +9,6 @@ import java.util.List;
 
 public interface ContaRepository extends CrudRepository<Conta, Integer> {
     List<Conta> findAllByStatus(Status status);
+    List<Conta> findAllByTipo(Tipo tipo);
 
 }
