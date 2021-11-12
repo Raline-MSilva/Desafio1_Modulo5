@@ -5,6 +5,7 @@ import br.com.zup.GerenciadorDeContas.dtos.ContaEntradaDTO;
 import br.com.zup.GerenciadorDeContas.dtos.ContaSaidaDTO;
 import br.com.zup.GerenciadorDeContas.dtos.ResumoContaDTO;
 import br.com.zup.GerenciadorDeContas.enums.Status;
+import br.com.zup.GerenciadorDeContas.enums.Tipo;
 import br.com.zup.GerenciadorDeContas.excecoes.StatusInvalidoException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -38,9 +40,9 @@ public class ContaController {
     }
 
     @GetMapping
-    public List<ResumoContaDTO> mostrarContasCadastradas (){
+    public List<ResumoContaDTO> mostrarContasCadastradas (@RequestParam (required = false) Status status){
         List<ResumoContaDTO> resumoDTO = new ArrayList<>();
-        for (Conta contas : contaService.listarContasCadastradas()){
+        for (Conta contas : contaService.listarContasCadastradas(status)){
             ResumoContaDTO resumoContaDTO = modelMapper.map(contas, ResumoContaDTO.class);
             resumoDTO.add(resumoContaDTO);
         }
