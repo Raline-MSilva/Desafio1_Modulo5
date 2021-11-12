@@ -42,7 +42,7 @@ public class ControllerAdvice {
     @ExceptionHandler(HttpMessageNotReadableException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public MensagemDeErro tratarExcecaoEnumInvalidoException(HttpMessageNotReadableException exception){
-        return new MensagemDeErro(exception.getLocalizedMessage());
+        return new MensagemDeErro("Tipo inválido" + exception.getCause());
     }
 
 }
