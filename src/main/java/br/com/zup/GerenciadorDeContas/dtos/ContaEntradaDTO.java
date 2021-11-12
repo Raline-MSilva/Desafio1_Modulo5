@@ -8,10 +8,12 @@ import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 public class ContaEntradaDTO {
+    @NotNull
     @Size(min = 2, max = 20, message = "Favor digitar um nome entre 2 a 20 caracteres")
     private String nome;
     @DecimalMin(value = "0.01", message = "favor colocar um valor maior que 0")
     private double valor;
+    @NotNull
     private Tipo tipo;
     @NotNull(message = "precisa preencher a data")
     private LocalDate dataDeVencimento;

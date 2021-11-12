@@ -21,6 +21,7 @@ public class Conta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Tipo tipo;
     @Column(nullable = false)
     private String nome;
